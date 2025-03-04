@@ -12,7 +12,7 @@ function Home(){
                     <input type="text" name="" id="" placeholder="item name"/>
                     <textarea name="" id="" placeholder="Item description"></textarea>                    
                     <input type="text" name="" id="" placeholder="Item price"/>
-                    <button>Add</button>
+                    <button className="bt">Add</button>
                 </form>
             </div>
         </div>
