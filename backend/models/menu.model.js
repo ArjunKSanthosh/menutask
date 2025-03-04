@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
+
 const menuSchema=new mongoose.Schema({
-    menu:{type:String},
-    itemName:{type:String},
-    description:{type:String},
-    price:{type:Number},
-})
+    mname:{type:String},
+    mdescription:{type:String}
+});
+export default mongoose.model.Menus||mongoose.model("Menu",menuSchema);

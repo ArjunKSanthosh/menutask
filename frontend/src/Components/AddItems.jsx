@@ -1,22 +1,48 @@
-import React,{useState,useEffect} from "react";
-import '../CSS/additem.css'
+import React,{useState} from 'react';
+import axios from "axios";
+import route from './route';
+import '../Scss/AddItem.scss'
+import { useNavigate, useParams } from 'react-router-dom';
 
-function Home(){
-    return(
-        <>
-        <div className="main2">
-        <h2>CREATE ITEM</h2>
-            <div className="form">
-                <form action="">
-                    <input type="text" name="" id="" placeholder="Add menu"/>
-                    <input type="text" name="" id="" placeholder="item name"/>
-                    <textarea name="" id="" placeholder="Item description"></textarea>                    
-                    <input type="text" name="" id="" placeholder="Item price"/>
-                    <button className="bt">Add</button>
-                </form>
-            </div>
-        </div>
-        </>
-    )
+const AddItem = () => {
+    const {menu}=useParams();
+    console.log(menu);
+    const navigate=useNavigate();
+    const [item,setItem]=useState({
+        iname:"",
+        idescription:"",
+        menu:menu,
+        price:0
+    })
+    const handleChange=(e)=>{
+        setItem({...item,[e.target.name]:e.target.value})
+    }
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        try {
+          const {data,status}=await axios.post(`${route()}additem`,item);
+        if(status===201){
+          alert(data.msg);
+          navigate('/');
+        }
+        else{
+          alert(data.msg)
+        }
+        } catch (error) {
+          alert("error occured")
+        }
+    }
+  return (
+    <div className='AddItem'>
+      <form className='addIForm' onSubmit={handleSubmit}>
+        <h2>{menu}</h2>
+        <input type="text" placeholder='Item Name' name="iname" id="iname" onChange={handleChange} />
+        <input type="text" placeholder='Description' name="idescription" id="idescription" onChange={handleChange} />
+        <input type="number" placeholder='Price' name="price" id="price" onChange={handleChange} />
+        <button type='submit'>Add Item</button>
+      </form>
+    </div>
+  )
 }
-export default Home;
+
+export default AddItem

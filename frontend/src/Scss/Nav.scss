@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Agu+Display&family=Big+Shoulders:opsz,wght@10..72,100..900&family=Cookie&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.Nav {
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Center the content vertically */
+    padding-bottom: 1%;
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+    .deep, .soft, .net {
+      font-size: 38px;
+      font-weight: 400;
+      font-family: "Big Shoulders", sans-serif;
+
+    }
+  
+    .deep {
+      color: rgb(68, 137, 248);
+    }
+  
+    .soft {
+      color: gray;
+    }
+  
+    /* Toggle button styling */
+    .toggle-button {
+      display: none;
+      background-color: #444;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      text-transform: uppercase;
+      border-radius: 5px;
+    }
+  
+    /* Navigation list styling */
+    .nlist {
+      display: flex;
+      align-items: baseline;
+      gap: 25px;
+      font-size: 12px;
+      text-transform: uppercase;
+      list-style-type: none;
+    }
+  
+    /* Media Query for smaller screens */
+    @media screen and (max-width: 768px) {
+      justify-content: space-between; /* Adjust spacing on small screens */
+      
+      .nlist {
+        display: none; /* Hide the menu by default on small screens */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+      }
+  
+      .toggle-button {
+        display: block; /* Show the toggle button on small screens */
+      }
+  
+      /* Show the menu when it is open */
+      .nlist.open {
+        display: flex;
+      }
+  
+      .nlist li {
+        margin: 10px 0;
+        font-size: 14px; /* Increase font size for better readability */
+      }
+    }
+  }
+  

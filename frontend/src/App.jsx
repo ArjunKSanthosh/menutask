@@ -1,15 +1,30 @@
-import { useState } from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Home from './Components/Home'
-import AddItems from './Components/AddItems'
-function App() {
+import Nav from './Components/Nav';
+import Menu from './Components/Menu';
+import Menus from './Components/Menus';
+import Contact from './Components/Contact';
+import Footer from './Components/Footer';
+import AddMenu from './Components/AddMenu';
+import AddItem from './Components/AddItems';
 
+import './App.css';
+
+function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path='/' Component={Home}/>
-      <Route path='/add' Component={AddItems}/>
-    </Routes>
+      <Routes>
+        <Route path="/" element={
+            <>
+              <Nav />
+              <Menu />
+              <Menus />
+              <Contact />
+              <Footer />
+            </>
+          } />
+          <Route path="/addmenu" element={<AddMenu />} />
+          <Route path="/additem/:menu" element={<AddItem />} />
+      </Routes>
     </BrowserRouter>
   )
 }
